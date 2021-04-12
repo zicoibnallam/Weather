@@ -5,7 +5,7 @@
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
-let apiKey = 'b4dd9e49108e5e7e87d80394265d2981';
+const apiKey = 'b4dd9e49108e5e7e87d80394265d2981';
 
  document.getElementById('generate').addEventListener('click', zipData);
  
@@ -36,7 +36,6 @@ postData('/addRegionData', {temp:data.main.temp, date:newDate, feelings:userResp
 
   try {
     const data = await res.json();
-    //console.log(data);
      return data;       
    }  
    catch(error) { console.log("error", error); }
@@ -45,7 +44,6 @@ postData('/addRegionData', {temp:data.main.temp, date:newDate, feelings:userResp
 //POST Route :.................................//*    
  
 const postData = async ( url = '', data = {})=>{                                     
-  // console.log(data);
     const response = await fetch(url, {           //  POST request, which is an object passed as the second parameter to fetch().
                                                   // The First parameter is the URL we want to make the POST request to.
 
@@ -60,7 +58,6 @@ const postData = async ( url = '', data = {})=>{
 
     try {
       const newData = await response.json();
-      // console.log(newData);
       return newData;
     }
     catch(error) {
@@ -81,7 +78,7 @@ const updateUI = async () => {
     document.getElementById('content').innerHTML = allData.feelings;
 
   }catch(error){
-    console.log("error", error);
+    console.log("your request failed , please try again.", error);
   }
 }
 
